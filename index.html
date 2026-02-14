@@ -106,7 +106,8 @@ button{
 
     <div class="buttons">
         <button class="yes" onclick="yesPage()">Yes 💞</button>
-        <button class="no" onclick="moveNo()">No 🙈</button>
+       <button class="no" onclick="moveNo()">No 🙈</button>
+
     </div>
 </div>
 
@@ -115,8 +116,16 @@ function moveNo(){
     const btn = document.querySelector(".no");
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 50);
+    btn.style.position = "absolute";
     btn.style.left = x + "px";
     btn.style.top = y + "px";
+}
+
+function yesPage(){
+    window.location.href="yes.html";
+}
+</script>
+
 }
 
 function yesPage(){
