@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Valentine 💖</title>
+<title>For My Love 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -19,128 +19,74 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ffd6e8,#ffeaf4,#fff0f7);
-    overflow:hidden;
+    background:linear-gradient(135deg,#ffd6e8,#fff0f5,#ffe6f0);
     font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    position:relative;
 }
 
+/* Soft glowing background circles */
+body::before, body::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,105,180,0.2);
+    border-radius:50%;
+    filter:blur(100px);
+}
+
+body::before{
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    bottom:-100px;
+    right:-100px;
+}
+
+/* Glass Card */
 .card{
     background:rgba(255,255,255,0.25);
     backdrop-filter:blur(15px);
     padding:40px 30px;
-    border-radius:25px;
+    border-radius:30px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(255,105,180,0.2);
-    animation:fadeIn 2s ease;
+    box-shadow:0 20px 40px rgba(255,105,180,0.25);
+    animation:fadeIn 1.8s ease;
+    max-width:350px;
 }
 
-h1{
+/* Name */
+.name{
     font-family:'Great Vibes',cursive;
-    font-size:40px;
+    font-size:42px;
     color:#ff4f81;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
-p{
+/* Question */
+.question{
     font-size:18px;
     color:#555;
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
+/* Buttons */
 .buttons{
     position:relative;
+    height:60px;
 }
 
 button{
     padding:14px 30px;
-    margin:10px;
     border:none;
     border-radius:40px;
     font-size:16px;
     cursor:pointer;
     transition:0.3s;
-}
-
-.yes{
-    background:linear-gradient(45deg,#ff4f81,#ff7eb3);
-    color:white;
-    box-shadow:0 5px 20px rgba(255,0,100,0.3);
-}
-
-.yes:hover{
-    transform:scale(1.1);
-}
-
-.no{
-    background:white;
-    color:#ff4f81;
-    border:2px solid #ff4f81;
     position:absolute;
 }
 
-.heart{
-    position:absolute;
-    font-size:18px;
-    opacity:0.6;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh);opacity:0;}
-    50%{opacity:0.8;}
-    100%{transform:translateY(-10vh);opacity:0;}
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-    <h1>Ummi Shifa Khan 💖</h1>
-    <p>Will you be my Valentine??? 🥺💘</p>
-
-    <div class="buttons">
-        <button class="yes" onclick="yesPage()">Yes 💞</button>
-       <button class="no" onclick="moveNo()">No 🙈</button>
-
-    </div>
-</div>
-
-<script>
-function moveNo(){
-    const btn = document.querySelector(".no");
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    btn.style.position = "absolute";
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
-}
-
-function yesPage(){
-    window.location.href="yes.html";
-}
-</script>
-
-}
-
-function yesPage(){
-    window.location.href="yes.html";
-}
-
-for(let i=0;i<20;i++){
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💗";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(4+Math.random()*4)+"s";
-    document.body.appendChild(heart);
-}
-</script>
-
-</body>
-</html>
+/* YES*
