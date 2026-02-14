@@ -26,8 +26,6 @@ body{
     font-size:28px;
     color:#ff4f81;
     padding:30px 20px;
-    position:relative;
-    z-index:2;
 }
 
 /* Gallery */
@@ -37,8 +35,6 @@ body{
     align-items:center;
     gap:25px;
     padding-bottom:60px;
-    position:relative;
-    z-index:2;
 }
 
 .gallery img{
@@ -60,11 +56,9 @@ body{
     color:#ff6b9a;
     padding:20px;
     margin-bottom:40px;
-    position:relative;
-    z-index:2;
 }
 
-/* 🌹 Romantic Falling Roses */
+/* 🌹 Romantic Falling Roses (Above Everything) */
 .dot{
     position:fixed;
     top:-60px;
@@ -75,7 +69,7 @@ body{
     animation-name:romanticFall;
     animation-timing-function:linear;
     animation-iteration-count:infinite;
-    z-index:1;
+    z-index:999; /* Above images */
 }
 
 /* Falling + drifting + fading */
@@ -133,15 +127,15 @@ for(let i=0;i<18;i++){
     let dot = document.createElement("div");
     dot.className = "dot";
 
-    // Random horizontal start
+    // Random horizontal position
     dot.style.left = Math.random() * 100 + "vw";
 
-    // Random size for depth effect
+    // Random size (depth effect)
     let size = 25 + Math.random()*20;
     dot.style.width = size + "px";
     dot.style.height = size + "px";
 
-    // Slow romantic animation
+    // Slow romantic fall
     dot.style.animationDuration = (14 + Math.random()*8) + "s";
 
     // Random delay
