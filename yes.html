@@ -17,11 +17,12 @@ body{
     text-align:center;
     overflow-x:hidden;
     position:relative;
+    animation:fadeIn 2s ease;
 }
 
-h1{
+.message{
     font-family:'Great Vibes',cursive;
-    font-size:32px;
+    font-size:28px;
     color:#ff4f81;
     padding:30px 20px;
 }
@@ -30,8 +31,8 @@ h1{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:20px;
-    padding-bottom:50px;
+    gap:25px;
+    padding-bottom:60px;
 }
 
 .gallery img{
@@ -41,12 +42,8 @@ h1{
     box-shadow:0 15px 35px rgba(255,105,180,0.3);
     transition:0.4s;
 }
+.gallery img:hover{transform:scale(1.05);}
 
-.gallery img:hover{
-    transform:scale(1.05);
-}
-
-/* Falling Rose Petals */
 .petal{
     position:fixed;
     top:-10px;
@@ -56,31 +53,32 @@ h1{
 }
 
 @keyframes fall{
-    0%{
-        transform:translateY(-10px) rotate(0deg);
-    }
-    100%{
-        transform:translateY(110vh) rotate(360deg);
-    }
+    0%{transform:translateY(-10px) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<h1>
+<div class="message">
 Thank you for saying yes, my love. <br>
 This is just the beginning of many beautiful memories together ❤️❤️❤️........
-</h1>
+</div>
 
 <div class="gallery">
-    <img src="valentine.jpg" alt="Memory 1">
-    <img src="image2.jpg" alt="Memory 2">
-    <img src="image3.jpg" alt="Memory 3">
+    <img src="image1.jpg">
+    <img src="image2.jpg">
+    <img src="image3.jpg">
 </div>
 
 <script>
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
     let petal=document.createElement("div");
     petal.className="petal";
     petal.innerHTML="🌹";
