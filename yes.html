@@ -45,10 +45,6 @@ body{
     transition:0.4s;
 }
 
-.gallery img:hover{
-    transform:scale(1.05);
-}
-
 /* Love Line */
 .love-line{
     font-family:'Great Vibes',cursive;
@@ -58,18 +54,16 @@ body{
     margin-bottom:40px;
 }
 
-/* 🌹 Romantic Falling Roses (Above Everything) */
+/* 🌹 Falling Roses OVER everything */
 .dot{
     position:fixed;
     top:-60px;
     background:url(https://image.ibb.co/kyUHab/rose.png);
     background-size:100% 100%;
-    pointer-events:none;
+    pointer-events:none;   /* allows clicks through */
     opacity:0;
-    animation-name:romanticFall;
-    animation-timing-function:linear;
-    animation-iteration-count:infinite;
-    z-index:999; /* Above images */
+    animation:romanticFall linear infinite;
+    z-index:9999;          /* ensures roses are above images */
 }
 
 /* Falling + drifting + fading */
@@ -127,7 +121,7 @@ for(let i=0;i<18;i++){
     let dot = document.createElement("div");
     dot.className = "dot";
 
-    // Random horizontal position
+    // Random horizontal start position
     dot.style.left = Math.random() * 100 + "vw";
 
     // Random size (depth effect)
@@ -135,7 +129,7 @@ for(let i=0;i<18;i++){
     dot.style.width = size + "px";
     dot.style.height = size + "px";
 
-    // Slow romantic fall
+    // Slow romantic fall duration
     dot.style.animationDuration = (14 + Math.random()*8) + "s";
 
     // Random delay
