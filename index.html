@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love 💖</title>
+<title>For My Valentine 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
     height:100vh;
@@ -21,29 +25,38 @@ body{
     position:relative;
 }
 
+/* Soft glowing background circles */
 body::before, body::after{
     content:"";
     position:absolute;
     width:300px;
     height:300px;
-    background:rgba(255,105,180,0.2);
+    background:rgba(255,105,180,0.25);
     border-radius:50%;
     filter:blur(100px);
 }
-body::before{top:-100px;left:-100px;}
-body::after{bottom:-100px;right:-100px;}
-
-.card{
-    background:rgba(255,255,255,0.25);
-    backdrop-filter:blur(15px);
-    padding:40px 30px;
-    border-radius:30px;
-    text-align:center;
-    box-shadow:0 20px 40px rgba(255,105,180,0.25);
-    animation:fadeIn 1.8s ease;
-    max-width:350px;
+body::before{
+    top:-120px;
+    left:-120px;
+}
+body::after{
+    bottom:-120px;
+    right:-120px;
 }
 
+/* Card */
+.card{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(18px);
+    padding:45px 30px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(255,105,180,0.3);
+    animation:fadeIn 1.5s ease;
+    max-width:360px;
+}
+
+/* Name */
 .name{
     font-family:'Great Vibes',cursive;
     font-size:42px;
@@ -51,42 +64,49 @@ body::after{bottom:-100px;right:-100px;}
     margin-bottom:15px;
 }
 
+/* Question */
 .question{
     font-size:18px;
     color:#555;
-    margin-bottom:35px;
+    margin-bottom:40px;
 }
 
+/* Buttons container */
 .buttons{
     position:relative;
-    height:60px;
+    height:70px;
 }
 
+/* Buttons */
 button{
     padding:14px 30px;
     border:none;
     border-radius:40px;
     font-size:16px;
     cursor:pointer;
-    transition:0.3s;
-    position:absolute;
+    transition:0.3s ease;
 }
 
+/* YES */
 .yes{
-    left:10%;
     background:linear-gradient(45deg,#ff4f81,#ff85a2);
     color:white;
     box-shadow:0 8px 20px rgba(255,0,100,0.3);
 }
-.yes:hover{transform:scale(1.1);}
+.yes:hover{
+    transform:scale(1.1);
+}
 
+/* NO */
 .no{
-    right:10%;
     background:white;
     color:#ff4f81;
     border:2px solid #ff4f81;
+    position:absolute;
+    right:0;
 }
 
+/* Floating hearts */
 .heart{
     position:absolute;
     font-size:20px;
@@ -120,19 +140,29 @@ button{
 </div>
 
 <script>
+const noBtn = document.querySelector(".no");
+
 function moveNo(){
-    const btn = document.querySelector(".no");
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth;
+    const maxY = window.innerHeight - buttonHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 }
 
 function goYes(){
     window.location.href="yes.html";
 }
 
-for(let i=0;i<20;i++){
+/* Floating hearts animation */
+for(let i=0;i<25;i++){
     let heart=document.createElement("div");
     heart.className="heart";
     heart.innerHTML="💗";
