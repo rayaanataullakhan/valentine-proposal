@@ -8,63 +8,87 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* Background + container */
 body{
-    margin:0;
-    padding:0;
-    min-height:100vh;
-    background:linear-gradient(135deg,#ffe4ec,#fff5fa);
-    font-family:'Poppins',sans-serif;
-    text-align:center;
-    overflow-x:hidden;
-    position:relative;
-    animation:fadeIn 2s ease;
+  background-color: #111;
+  font-family: 'Poppins', sans-serif;
+  color:white;
+  overflow:hidden;
+  margin:0;
+  text-align:center;
 }
 
+html, body, #container{
+  width:100%;
+  height:100%;
+}
+
+/* Rose dot */
+.dot{
+  width:35px;
+  height:35px;
+  position:absolute;
+  background: url(https://image.ibb.co/kyUHab/rose.png);
+  background-size: 100% 100%;
+}
+
+/* Romantic message */
 .message{
-    font-family:'Great Vibes',cursive;
-    font-size:28px;
-    color:#ff4f81;
-    padding:30px 20px;
+  font-family:'Great Vibes',cursive;
+  font-size:28px;
+  color:#ff7eb3;
+  padding:30px 20px;
+  z-index:2;
+  position:relative;
 }
 
+/* Gallery */
 .gallery{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:25px;
-    padding-bottom:60px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px;
+  padding-bottom:40px;
+  z-index:2;
+  position:relative;
 }
 
 .gallery img{
-    width:90%;
-    max-width:400px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(255,105,180,0.3);
-    transition:0.4s;
-}
-.gallery img:hover{transform:scale(1.05);}
-
-.petal{
-    position:fixed;
-    top:-10px;
-    font-size:24px;
-    animation:fall linear infinite;
-    opacity:0.8;
+  width:90%;
+  max-width:400px;
+  border-radius:25px;
+  box-shadow:0 15px 35px rgba(255,105,180,0.3);
+  transition:0.4s;
 }
 
-@keyframes fall{
-    0%{transform:translateY(-10px) rotate(0deg);}
-    100%{transform:translateY(110vh) rotate(360deg);}
+.gallery img:hover{
+  transform:scale(1.05);
 }
 
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
+/* Extra love line */
+.love-line{
+  font-family:'Great Vibes',cursive;
+  font-size:30px;
+  color:#ff4f81;
+  margin:40px 20px;
+  position:relative;
+  z-index:2;
 }
+
+#container{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+
 </style>
 </head>
 
 <body>
+
+<div id="container"></div>
 
 <div class="message">
 Thank you for saying yes, my love. <br>
@@ -77,21 +101,22 @@ This is just the beginning of many beautiful memories together ❤️❤️❤�
     <img src="image3.jpg">
 </div>
 
-    <div class="love-line">
-    I love you to the moon and back ....
+<div class="love-line">
+I love you to the moon and back 🌙💖....
 </div>
 
-
 <script>
-for(let i=0;i<30;i++){
-    let petal=document.createElement("div");
-    petal.className="petal";
-    petal.innerHTML="🌹";
-    petal.style.left=Math.random()*100+"vw";
-    petal.style.animationDuration=(5+Math.random()*5)+"s";
-    petal.style.fontSize=(20+Math.random()*20)+"px";
-    document.body.appendChild(petal);
+
+/* Create falling rose animation */
+for(let i=0;i<40;i++){
+    let dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = Math.random()*window.innerWidth + "px";
+    dot.style.top = Math.random()*window.innerHeight + "px";
+    dot.style.animationDuration = (5 + Math.random()*5) + "s";
+    document.getElementById("container").appendChild(dot);
 }
+
 </script>
 
 </body>
