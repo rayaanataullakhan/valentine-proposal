@@ -8,11 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     height:100vh;
@@ -25,7 +21,6 @@ body{
     position:relative;
 }
 
-/* Soft glowing background circles */
 body::before, body::after{
     content:"";
     position:absolute;
@@ -35,18 +30,9 @@ body::before, body::after{
     border-radius:50%;
     filter:blur(100px);
 }
+body::before{top:-100px;left:-100px;}
+body::after{bottom:-100px;right:-100px;}
 
-body::before{
-    top:-100px;
-    left:-100px;
-}
-
-body::after{
-    bottom:-100px;
-    right:-100px;
-}
-
-/* Glass Card */
 .card{
     background:rgba(255,255,255,0.25);
     backdrop-filter:blur(15px);
@@ -58,7 +44,6 @@ body::after{
     max-width:350px;
 }
 
-/* Name */
 .name{
     font-family:'Great Vibes',cursive;
     font-size:42px;
@@ -66,14 +51,12 @@ body::after{
     margin-bottom:15px;
 }
 
-/* Question */
 .question{
     font-size:18px;
     color:#555;
     margin-bottom:35px;
 }
 
-/* Buttons */
 .buttons{
     position:relative;
     height:60px;
@@ -89,4 +72,75 @@ button{
     position:absolute;
 }
 
-/* YES*
+.yes{
+    left:10%;
+    background:linear-gradient(45deg,#ff4f81,#ff85a2);
+    color:white;
+    box-shadow:0 8px 20px rgba(255,0,100,0.3);
+}
+.yes:hover{transform:scale(1.1);}
+
+.no{
+    right:10%;
+    background:white;
+    color:#ff4f81;
+    border:2px solid #ff4f81;
+}
+
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:float 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="name">Ummi Shifa Khan 💖</div>
+    <div class="question">Will you be my Valentine??? 🥺💘</div>
+
+    <div class="buttons">
+        <button class="yes" onclick="goYes()">Yes 💞</button>
+        <button class="no" onclick="moveNo()">No 🙈</button>
+    </div>
+</div>
+
+<script>
+function moveNo(){
+    const btn = document.querySelector(".no");
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+function goYes(){
+    window.location.href="yes.html";
+}
+
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💗";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
