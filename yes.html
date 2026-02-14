@@ -12,59 +12,51 @@ body{
     margin:0;
     padding:0;
     min-height:100vh;
-    background-color:#111;
+    background:linear-gradient(135deg,#ffe4ec,#fff5fa);
     font-family:'Poppins',sans-serif;
-    color:white;
     text-align:center;
-    overflow:hidden;
+    overflow-x:hidden;
     position:relative;
-}
-
-/* Make full screen */
-html, body{
-    width:100%;
-    height:100%;
+    animation:fadeIn 2s ease;
 }
 
 /* Romantic Message */
 .message{
     font-family:'Great Vibes',cursive;
-    font-size:clamp(22px,6vw,34px);
+    font-size:28px;
     color:#ff4f81;
     padding:30px 20px;
     position:relative;
     z-index:2;
 }
 
-/* Image Gallery */
+/* Gallery */
 .gallery{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:20px;
-    padding-bottom:40px;
+    gap:25px;
+    padding-bottom:60px;
     position:relative;
     z-index:2;
 }
 
 .gallery img{
     width:90%;
-    max-width:380px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(255,105,180,0.4);
-    transition:0.4s ease;
+    max-width:400px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(255,105,180,0.3);
+    transition:0.4s;
 }
 
-@media (hover:hover){
-    .gallery img:hover{
-        transform:scale(1.05);
-    }
+.gallery img:hover{
+    transform:scale(1.05);
 }
 
 /* Love Line */
 .love-line{
     font-family:'Great Vibes',cursive;
-    font-size:clamp(20px,5vw,28px);
+    font-size:26px;
     color:#ff6b9a;
     padding:20px;
     margin-bottom:40px;
@@ -72,21 +64,49 @@ html, body{
     z-index:2;
 }
 
-/* Floating Rose Dots */
+/* 🌹 Romantic Falling Roses */
 .dot{
-    width:35px;
-    height:35px;
-    position:absolute;
+    position:fixed;
+    top:-60px;
     background:url(https://image.ibb.co/kyUHab/rose.png);
     background-size:100% 100%;
     pointer-events:none;
-    opacity:0.8;
+    opacity:0;
+    animation-name:romanticFall;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    z-index:1;
 }
 
-/* Floating Animation */
-@keyframes float{
-    0%{ transform:translateY(0px) rotate(0deg); }
-    100%{ transform:translateY(-120px) rotate(360deg); }
+/* Falling + drifting + fading */
+@keyframes romanticFall{
+    0%{
+        transform:translateY(-60px) translateX(0px) rotate(0deg);
+        opacity:0;
+    }
+    10%{
+        opacity:0.9;
+    }
+    25%{
+        transform:translateY(25vh) translateX(15px) rotate(90deg);
+    }
+    50%{
+        transform:translateY(50vh) translateX(-15px) rotate(180deg);
+        opacity:0.8;
+    }
+    75%{
+        transform:translateY(75vh) translateX(10px) rotate(270deg);
+        opacity:0.5;
+    }
+    100%{
+        transform:translateY(110vh) translateX(0px) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 </style>
 </head>
@@ -109,18 +129,25 @@ I love you to the moon and back 🌙✨
 </div>
 
 <script>
-const container = document.body;
-
-for(let i=0;i<25;i++){
+for(let i=0;i<18;i++){
     let dot = document.createElement("div");
     dot.className = "dot";
 
+    // Random horizontal start
     dot.style.left = Math.random() * 100 + "vw";
-    dot.style.top = Math.random() * 100 + "vh";
 
-    dot.style.animation = `float ${5 + Math.random()*5}s infinite ease-in-out alternate`;
+    // Random size for depth effect
+    let size = 25 + Math.random()*20;
+    dot.style.width = size + "px";
+    dot.style.height = size + "px";
 
-    container.appendChild(dot);
+    // Slow romantic animation
+    dot.style.animationDuration = (14 + Math.random()*8) + "s";
+
+    // Random delay
+    dot.style.animationDelay = Math.random() * 10 + "s";
+
+    document.body.appendChild(dot);
 }
 </script>
 
