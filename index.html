@@ -54,8 +54,6 @@ body::after{
     box-shadow:0 20px 40px rgba(255,105,180,0.3);
     animation:fadeIn 1.5s ease;
     max-width:360px;
-    width:90%;
-    position:relative; /* IMPORTANT for button positioning */
 }
 
 /* Name */
@@ -106,7 +104,6 @@ button{
     border:2px solid #ff4f81;
     position:absolute;
     right:0;
-    transition:all 0.3s ease; /* smooth movement */
 }
 
 /* Floating hearts */
@@ -115,7 +112,6 @@ button{
     font-size:20px;
     animation:float 6s linear infinite;
     opacity:0.7;
-    text-shadow:0 0 10px #ff69b4;
 }
 
 @keyframes float{
@@ -144,33 +140,25 @@ button{
 </div>
 
 <script>
-
 const noBtn = document.querySelector(".no");
-const card = document.querySelector(".card");
 
-/* Move NO button smoothly inside card */
 function moveNo(){
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
 
-    const cardRect = card.getBoundingClientRect();
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
-
-    const maxX = cardRect.width - btnWidth - 20;
-    const maxY = cardRect.height - btnHeight - 20;
+    const maxX = window.innerWidth - buttonWidth;
+    const maxY = window.innerHeight - buttonHeight;
 
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
 
+    noBtn.style.position = "fixed";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 }
 
-/* YES action */
 function goYes(){
-    document.querySelector(".card").innerHTML = `
-        <div class="name">Yayyyy 💖</div>
-        <div class="question">You just made me the happiest person alive 🥺💘</div>
-    `;
+    window.location.href="yes.html";
 }
 
 /* Floating hearts animation */
@@ -182,7 +170,6 @@ for(let i=0;i<25;i++){
     heart.style.animationDuration=(4+Math.random()*4)+"s";
     document.body.appendChild(heart);
 }
-
 </script>
 
 </body>
